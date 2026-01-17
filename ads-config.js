@@ -5,3 +5,4 @@ ADS_CONFIG = {
   maxPerSession: 1,
   devices: ["desktop"]
 }
+
