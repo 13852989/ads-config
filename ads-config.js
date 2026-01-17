@@ -1,14 +1,14 @@
 (function () {
 
   // =========================
-  // CONFIGURACIÓN
+  // CONFIGURACIÓN (GLOBAL)
   // =========================
-  const ADS_CONFIG = {
+  window.ADS_CONFIG = {
     provider: "monetag",
     format: "popunder",
     zoneId: "10476753",
     maxPerSession: 1,
-    devices: ["desktop"] // solo desktop
+    devices: ["desktop"]
   };
 
   // =========================
@@ -33,7 +33,7 @@
   }
 
   // =========================
-  // EJECUTOR MONETAG
+  // EJECUTOR MONETAG (FIX)
   // =========================
   function runMonetagPopunder() {
     if (!canShow()) return;
@@ -41,7 +41,7 @@
     try {
       const s = document.createElement("script");
       s.src = "https://al5sm.com/tag.min.js";
-      s.dataset.zone = ADS_CONFIG.zoneId;
+      s.setAttribute("data-zone", ADS_CONFIG.zoneId); // 🔥 FIX CLAVE
       s.async = true;
 
       (document.body || document.documentElement).appendChild(s);
@@ -53,7 +53,7 @@
   }
 
   // =========================
-  // EXPONER FUNCIÓN GLOBAL
+  // FUNCIÓN GLOBAL
   // =========================
   window.runAds = function () {
     if (ADS_CONFIG.provider === "monetag" && ADS_CONFIG.format === "popunder") {
