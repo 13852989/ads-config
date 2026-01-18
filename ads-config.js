@@ -6,6 +6,10 @@ window.ADS_CONFIG = {
     "https://otieu.com/4/10480478"
   ],
   maxPerSession: 1
+  function isPlayerPage() {
+  return document.querySelector('.player-container');
+}
+
 };
 
 
